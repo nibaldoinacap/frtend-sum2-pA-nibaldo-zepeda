@@ -1,93 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frontend Java Project</title>
-    <link rel="stylesheet" href="css/reserva.css">
+    <title>ViajarYa - Agencia de Turismo</title>
+    <link rel="stylesheet" href="css/style.css">
     <script src="js/app.js" defer></script>
 </head>
 <body>
+
+    <!-- Header y Navegación -->
     <header>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#destinations">Destinations</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#destinations">Destinos</a></li>
+                <li><a href="#services">Servicios</a></li>
+                <li><a href="#about">Por qué elegirnos</a></li>
+                <li><a href="reserva.html">Reserva</a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="hero" style="background-image: url('path/to/your/image.jpg');">
-        <div class="search-bar">
-            <input type="text" placeholder="Search for your next adventure...">
-            <button type="submit">Search</button>
+    <!-- Hero Section con Buscador -->
+    <section id="hero" style="background-image: url('images/hero-bg.jpg');">
+        <div class="hero-overlay">
+            <div class="search-bar">
+                <input type="text" placeholder="Destino (Ej. París)">
+                <input type="date" title="Fecha de viaje">
+                <input type="number" placeholder="Pasajeros" min="1">
+                <button type="submit">Buscar</button>
+            </div>
         </div>
     </section>
 
-    <section id="destinations">
-        <h2>Popular Destinations</h2>
-        <div class="card">
-            <img src="path/to/image1.jpg" alt="Destination 1">
-            <h3>Destination 1</h3>
-            <p>Description of Destination 1.</p>
-            <p>Price: $XXX</p>
-        </div>
-        <div class="card">
-            <img src="path/to/image2.jpg" alt="Destination 2">
-            <h3>Destination 2</h3>
-            <p>Description of Destination 2.</p>
-            <p>Price: $XXX</p>
-        </div>
-        <div class="card">
-            <img src="path/to/image3.jpg" alt="Destination 3">
-            <h3>Destination 3</h3>
-            <p>Description of Destination 3.</p>
-            <p>Price: $XXX</p>
-        </div>
-        <div class="card">
-            <img src="path/to/image4.jpg" alt="Destination 4">
-            <h3>Destination 4</h3>
-            <p>Description of Destination 4.</p>
-            <p>Price: $XXX</p>
-        </div>
-    </section>
+    <!-- Secciones Principales (Destinos y Servicios) -->
+    <main>
+        <section id="destinations">
+            <h2>Nuestros Destinos Destacados</h2>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200" alt="Destino 1">
+                <h3>Buenos Aires</h3>
+                <p>Disfruta de la capital del tango.</p>
+                <p><strong>Desde $500</strong></p>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200" alt="Destino 2">
+                <h3>Río de Janeiro</h3>
+                <p>Playas, sol y cultura vibrante.</p>
+                <p><strong>Desde $700</strong></p>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200" alt="Destino 3">
+                <h3>Machu Picchu</h3>
+                <p>Maravíllate con la historia inca.</p>
+                <p><strong>Desde $600</strong></p>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200" alt="Destino 4">
+                <h3>París</h3>
+                <p>La ciudad del amor te espera.</p>
+                <p><strong>Desde $1200</strong></p>
+            </div>
+        </section>
 
-    <section id="services">
-        <h2>Our Services</h2>
-        <ul>
-            <li>Service 1</li>
-            <li>Service 2</li>
-            <li>Service 3</li>
-            <li>Service 4</li>
-        </ul>
-    </section>
+        <section id="services">
+            <h2>Nuestros Servicios</h2>
+            <ul>
+                <li>Vuelos internacionales y nacionales</li>
+                <li>Hospedaje en hoteles de 3 a 5 estrellas</li>
+                <li>Excursiones guiadas y actividades</li>
+                <li>Seguros de viaje integrales</li>
+            </ul>
+        </section>
+        
+        <section id="about">
+            <h2>Por qué Elegirnos</h2>
+            <ul>
+                <li>Experiencia comprobada por más de 10 años.</li>
+                <li>Atención personalizada 24/7.</li>
+                <li>Los mejores precios garantizados del mercado.</li>
+            </ul>
+        </section>
+    </main>
 
-    <section id="about">
-        <h2>Why Choose Us</h2>
-        <ul>
-            <li>Argument 1</li>
-            <li>Argument 2</li>
-            <li>Argument 3</li>
-        </ul>
-    </section>
-
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2023 Your Agency Name. Your Slogan Here.</p>
+        <p>&copy; 2026 ViajarYa. Tu viaje soñado comienza aquí.</p>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#destinations">Destinations</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#destinations">Destinos</a></li>
+                <li><a href="#services">Servicios</a></li>
+                <li><a href="reserva.html">Reserva</a></li>
             </ul>
         </nav>
         <div class="contact-info">
-            <p>Email: contact@youragency.com</p>
-            <p>Phone: (123) 456-7890</p>
+            <p>Email: contacto@viajarya.com</p>
+            <p>Teléfono: +56 9 1234 5678</p>
+            <p>WhatsApp: +56 9 1234 5678</p>
         </div>
         <div class="social-media">
             <a href="#">Facebook</a>
@@ -95,5 +106,6 @@
             <a href="#">Instagram</a>
         </div>
     </footer>
+
 </body>
 </html>
