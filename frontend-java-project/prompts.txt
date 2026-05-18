@@ -33,3 +33,8 @@ Entrada 6
 - Prompt utilizado: "Actúa como experto en frontend y entrégame el código completo del archivo validaciones.js (sin partes cortadas) para cubrir totalmente las reglas de Etapa 3. Debe incluir manejo DOM para mostrar/ocultar los nuevos inputs condicionales de la Etapa 5 (adultos mayores y necesidades especiales) y validar los nuevos select obligatorios. Asegúrate de conservar el preventDefault, la creación dinámica de mensajes bajo cada input, el contador de comentarios, la validación de fechas (7 días en adelante y edad >18), expresiones regulares y el scroll al primer error."
 - Resumen de la respuesta: Copilot integró los listeners "change" para mostrar u ocultar campos dinámicos en tiempo real y sumó la validación final que inyecta los mensajes de error exactos debajo de cada input defectuoso.
 - Reflexión personal / Uso: Lo usé para mejorar la experiencia de quien llene el formulario. Darle un aviso visual inmediato (como los bordes rojos o mensajes) ayuda a que la persona vea rápido en qué se equivocó y lo arregle ahí mismo
+
+Entrada Extra (Mejoras finales)
+- Prompt utilizado: "Revise la rúbrica nuevamente y noté que me faltaban imágenes reales en el index.html y restaurar campos en reserva.html, ¿puedes darme el código final para asegurar el 100%?"
+- Resumen de la respuesta: Copilot me entregó el código completo para reemplazar en ambos archivos, inyectando imágenes de Unsplash, iconos y restaurando todos los campos condicionales necesarios para JavaScript.
+- Reflexión personal / Uso: Lo utilicé para dar el último pulido al proyecto. Aplicar estas últimas líneas aseguró que las tarjetas de destino se vieran profesionales y que el formulario no perdiera ningún campo evaluado en la rúbrica.
