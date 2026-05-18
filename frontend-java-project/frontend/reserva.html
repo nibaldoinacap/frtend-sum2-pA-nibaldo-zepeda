@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud de Reserva - ViajarYa</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/reserva.css">
+    <script src="js/validaciones.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Volver al inicio</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="form-container">
+        <h2>Solicitud de Paquete Turístico</h2>
+        <div id="error-summary" style="display:none; color:red; margin-bottom: 1rem;"></div>
+
+        <form id="reserva-form" novalidate>
+            <!-- SECCIÓN A: Datos del Viaje -->
+            <fieldset>
+                <legend>Sección A — Datos del Viaje</legend>
+                
+                <div class="form-group">
+                    <label for="destino">Destino de interés *</label>
+                    <select id="destino" name="destino" required>
+                        <option value="">Seleccione un destino...</option>
+                        <optgroup label="América del Sur">
+                            <option value="buenos_aires">Buenos Aires, Argentina</option>
+                            <option value="rio">Río de Janeiro, Brasil</option>
+                            <option value="machu_picchu">Machu Picchu, Perú</option>
+                        </optgroup>
+                        <optgroup label="Europa">
+                            <option value="paris">París, Francia</option>
+                            <option value="madrid">Madrid, España</option>
+                            <option value="roma">Roma, Italia</option>
+                        </optgroup>
+                        <optgroup label="Caribe">
+                            <option value="cancun">Cancún, México</option>
+                            <option value="punta_cana">Punta Cana, R. Dominicana</option>
+                            <option value="aruba">Aruba</option>
+                        </optgroup>
+                        <optgroup label="Asia y Otros">
+                            <option value="tokio">Tokio, Japón</option>
+                            <option value="bangkok">Bangkok, Tailandia</option>
+                            <option value="sidney">Sídney, Australia</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Tipo de paquete *</label>
+                    <div>
+                        <label><input type="radio" name="tipo_paquete" value="todo_incluido" required> Todo incluido</label>
+                        <label><input type="radio" name="tipo_paquete" value="aereo_hotel"> Solo aéreo + hotel</label>
+                        <label><input type="radio" name="tipo_paquete" value="crucero"> Crucero</label>
+                        <label><input type="radio" name="tipo_paquete" value="medida"> A medida</label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div>
+                        <label for="fecha_salida">Fecha de salida deseada *</label>
+                        <input type="date" id="fecha_salida" name="fecha_salida" required>
+                    </div>
+                    <div>
+                        <label for="fecha_regreso">Fecha de regreso deseada *</label>
+                        <input type="date" id="fecha_regreso" name="fecha_regreso" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="duracion">Duración aproximada *</label>
+                    <select id="duracion" name="duracion" required>
+                        <option value="">Seleccione...</option>
+                        <option value="3_5_dias">3 a 5 días</option>
+                        <option value="1_semana">1 semana</option>
+                        <option value="2_semanas">2 semanas</option>
+                        <option value="mas_2_semanas">Más de 2 semanas</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="puerto_salida">Puerto de salida *</label>
+                    <select id="puerto_salida" name="puerto_salida" required>
+                        <option value="">Seleccione...</option>
+                        <option value="buenos_aires">Buenos Aires</option>
+                        <option value="cordoba">Córdoba</option>
+                        <option value="rosario">Rosario</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="container_otro_puerto" style="display:none;">
+                    <label for="otro_puerto">Especificar ciudad *</label>
+                    <input type="text" id="otro_puerto" name="otro_puerto">
+                </div>
+            </fieldset>
+
+            <!-- SECCIÓN B: Datos de los Pasajeros -->
+            <fieldset>
+                <legend>Sección B — Datos de los Pasajeros</legend>
+                
+                <div class="form-group row">
+                    <div>
+                        <label for="cant_adultos">Adultos (Mín 1, Máx 10) *</label>
+                        <input type="number" id="cant_adultos" name="cant_adultos" min="1" max="10" value="1" required>
+                    </div>
+                    <div>
+                        <label for="cant_menores">Menores (Mín 0, Máx 8)</label>
+                        <input type="number" id="cant_menores" name="cant_menores" min="0" max="8" value="0">
+                    </div>
+                </div>
+
+                <h4>Datos del Pasajero Principal</h4>
+                <div class="form-group">
+                    <label for="nombre_principal">Nombre completo *</label>
+                    <input type="text" id="nombre_principal" name="nombre_principal" required>
+                </div>
+                
+                <div class="form-group row">
+                    <div>
+                        <label for="dni_pasaporte">DNI o Pasaporte *</label>
+                        <input type="text" id="dni_pasaporte" name="dni_pasaporte" required>
+                    </div>
+                    <div>
+                        <label for="fecha_nac_principal">Fecha de Nacimiento *</label>
+                        <input type="date" id="fecha_nac_principal" name="fecha_nac_principal" required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div>
+                        <label for="email_principal">Correo electrónico *</label>
+                        <input type="email" id="email_principal" name="email_principal" required>
+                    </div>
+                    <div>
+                        <label for="telefono_principal">Teléfono de contacto *</label>
+                        <input type="tel" id="telefono_principal" name="telefono_principal" required>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- SECCIÓN C & D Simplificadas (Preferencias y Confirmación) -->
+            <fieldset>
+                <legend>Secciones C & D — Preferencias y Confirmación</legend>
+                <div class="form-group">
+                    <label for="tipo_hab">Tipo de habitación *</label>
+                    <select id="tipo_hab" name="tipo_hab" required>
+                        <option value="">Seleccione...</option>
+                        <option value="simple">Simple</option>
+                        <option value="doble">Doble</option>
+                        <option value="triple">Triple</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="comentarios">Comentarios Especiales (Máx 300) <span id="char-count">0 / 300</span></label>
+                    <textarea id="comentarios" name="comentarios" maxlength="300" rows="4"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label><input type="checkbox" id="terminos" name="terminos" required> Acepto los <a href="#">Términos y Condiciones</a> *</label>
+                    <label><input type="checkbox" id="privacidad" name="privacidad" required> Acepto la Política de Privacidad *</label>
+                </div>
+            </fieldset>
+
+            <div class="form-actions" style="text-align: center; margin-top: 2rem;">
+                <button type="submit" class="btn-primary">Solicitar Reserva</button>
+                <button type="reset" class="btn-secondary">Limpiar</button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

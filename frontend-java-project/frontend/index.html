@@ -3,109 +3,274 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ViajarYa - Agencia de Turismo</title>
+    <title>Solicitud de Reserva - ViajarYa</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/app.js" defer></script>
+    <link rel="stylesheet" href="css/reserva.css">
+    <script src="js/validaciones.js" defer></script>
 </head>
 <body>
-
-    <!-- Header y Navegación -->
     <header>
         <nav>
             <ul>
-                <li><a href="#home">Inicio</a></li>
-                <li><a href="#destinations">Destinos</a></li>
-                <li><a href="#services">Servicios</a></li>
-                <li><a href="#about">Por qué elegirnos</a></li>
-                <li><a href="reserva.html">Reserva</a></li>
+                <li><a href="index.html">Volver al inicio</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero Section con Buscador -->
-    <section id="hero" style="background-image: url('images/hero-bg.jpg');">
-        <div class="hero-overlay">
-            <div class="search-bar">
-                <input type="text" placeholder="Destino (Ej. París)">
-                <input type="date" title="Fecha de viaje">
-                <input type="number" placeholder="Pasajeros" min="1">
-                <button type="submit">Buscar</button>
-            </div>
-        </div>
-    </section>
+    <main class="form-container">
+        <h2>Solicitud de Paquete Turístico</h2>
+        <div id="error-summary" style="display:none; color:red; margin-bottom: 1rem;"></div>
 
-    <!-- Secciones Principales (Destinos y Servicios) -->
-    <main>
-        <section id="destinations">
-            <h2>Nuestros Destinos Destacados</h2>
-            <div class="card">
-                <img src="https://via.placeholder.com/300x200" alt="Destino 1">
-                <h3>Buenos Aires</h3>
-                <p>Disfruta de la capital del tango.</p>
-                <p><strong>Desde $500</strong></p>
-            </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/300x200" alt="Destino 2">
-                <h3>Río de Janeiro</h3>
-                <p>Playas, sol y cultura vibrante.</p>
-                <p><strong>Desde $700</strong></p>
-            </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/300x200" alt="Destino 3">
-                <h3>Machu Picchu</h3>
-                <p>Maravíllate con la historia inca.</p>
-                <p><strong>Desde $600</strong></p>
-            </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/300x200" alt="Destino 4">
-                <h3>París</h3>
-                <p>La ciudad del amor te espera.</p>
-                <p><strong>Desde $1200</strong></p>
-            </div>
-        </section>
+        <form id="reserva-form" novalidate>
+            
+            <!-- SECCIÓN A: Datos del Viaje -->
+            <fieldset>
+                <legend>Sección A — Datos del Viaje</legend>
+                
+                <div class="form-group">
+                    <label for="destino">Destino de interés *</label>
+                    <select id="destino" name="destino" required>
+                        <option value="">Seleccione un destino...</option>
+                        <optgroup label="América del Sur">
+                            <option value="buenos_aires">Buenos Aires, Argentina</option>
+                            <option value="cordoba">Córdoba, Argentina</option>
+                            <option value="rio">Río de Janeiro, Brasil</option>
+                            <option value="machu_picchu">Machu Picchu, Perú</option>
+                        </optgroup>
+                        <optgroup label="Europa">
+                            <option value="paris">París, Francia</option>
+                            <option value="madrid">Madrid, España</option>
+                            <option value="roma">Roma, Italia</option>
+                        </optgroup>
+                        <optgroup label="Caribe">
+                            <option value="cancun">Cancún, México</option>
+                            <option value="punta_cana">Punta Cana, R. Dominicana</option>
+                            <option value="aruba">Aruba</option>
+                        </optgroup>
+                        <optgroup label="Asia y Otros">
+                            <option value="tokio">Tokio, Japón</option>
+                            <option value="bangkok">Bangkok, Tailandia</option>
+                            <option value="sidney">Sídney, Australia</option>
+                        </optgroup>
+                    </select>
+                </div>
 
-        <section id="services">
-            <h2>Nuestros Servicios</h2>
-            <ul>
-                <li>Vuelos internacionales y nacionales</li>
-                <li>Hospedaje en hoteles de 3 a 5 estrellas</li>
-                <li>Excursiones guiadas y actividades</li>
-                <li>Seguros de viaje integrales</li>
-            </ul>
-        </section>
-        
-        <section id="about">
-            <h2>Por qué Elegirnos</h2>
-            <ul>
-                <li>Experiencia comprobada por más de 10 años.</li>
-                <li>Atención personalizada 24/7.</li>
-                <li>Los mejores precios garantizados del mercado.</li>
-            </ul>
-        </section>
+                <div class="form-group">
+                    <label>Tipo de paquete *</label>
+                    <div id="grupo-tipo-paquete">
+                        <label><input type="radio" name="tipo_paquete" value="todo_incluido"> Todo incluido</label>
+                        <label><input type="radio" name="tipo_paquete" value="aereo_hotel"> Solo aéreo + hotel</label>
+                        <label><input type="radio" name="tipo_paquete" value="crucero"> Crucero</label>
+                        <label><input type="radio" name="tipo_paquete" value="egresados"> Viaje de egresados</label>
+                        <label><input type="radio" name="tipo_paquete" value="medida"> A medida</label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div>
+                        <label for="fecha_salida">Fecha de salida deseada *</label>
+                        <input type="date" id="fecha_salida" name="fecha_salida" required>
+                    </div>
+                    <div>
+                        <label for="fecha_regreso">Fecha de regreso deseada *</label>
+                        <input type="date" id="fecha_regreso" name="fecha_regreso" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><input type="checkbox" id="fechas_flexibles" name="fechas_flexibles"> Mis fechas son flexibles (± 3 días)</label>
+                </div>
+
+                <div class="form-group row">
+                    <div>
+                        <label for="duracion">Duración aproximada *</label>
+                        <select id="duracion" name="duracion" required>
+                            <option value="">Seleccione...</option>
+                            <option value="3_5_dias">3 a 5 días</option>
+                            <option value="1_semana">1 semana</option>
+                            <option value="2_semanas">2 semanas</option>
+                            <option value="mas_2_semanas">Más de 2 semanas</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="puerto_salida">Puerto de salida *</label>
+                        <select id="puerto_salida" name="puerto_salida" required>
+                            <option value="">Seleccione...</option>
+                            <option value="buenos_aires">Buenos Aires</option>
+                            <option value="cordoba">Córdoba</option>
+                            <option value="rosario">Rosario</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group" id="container_otro_puerto" style="display:none;">
+                    <label for="otro_puerto">Especificar ciudad de salida *</label>
+                    <input type="text" id="otro_puerto" name="otro_puerto">
+                </div>
+            </fieldset>
+
+            <!-- SECCIÓN B: Datos de los Pasajeros -->
+            <fieldset>
+                <legend>Sección B — Datos de los Pasajeros</legend>
+                
+                <div class="form-group row">
+                    <div>
+                        <label for="cant_adultos">Adultos (Mín 1, Máx 10) *</label>
+                        <input type="number" id="cant_adultos" name="cant_adultos" min="1" max="10" value="1" required>
+                    </div>
+                    <div>
+                        <label for="cant_menores">Menores (Mín 0, Máx 8)</label>
+                        <input type="number" id="cant_menores" name="cant_menores" min="0" max="8" value="0">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div>
+                        <label><input type="checkbox" id="con_adultos_mayores" name="con_adultos_mayores"> Viaja con adultos mayores</label>
+                    </div>
+                    <div id="container_cant_mayores" style="display:none;">
+                        <label for="cant_mayores">Cantidad de adultos mayores</label>
+                        <input type="number" id="cant_mayores" name="cant_mayores" min="1" max="10">
+                    </div>
+                </div>
+
+                <h4>Datos del Pasajero Principal</h4>
+                <div class="form-group">
+                    <label for="nombre_principal">Nombre completo *</label>
+                    <input type="text" id="nombre_principal" name="nombre_principal" required>
+                </div>
+                
+                <div class="form-group row">
+                    <div>
+                        <label for="dni_pasaporte">DNI o Pasaporte *</label>
+                        <input type="text" id="dni_pasaporte" name="dni_pasaporte" required>
+                    </div>
+                    <div>
+                        <label for="fecha_nac_principal">Fecha de Nacimiento *</label>
+                        <input type="date" id="fecha_nac_principal" name="fecha_nac_principal" required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div>
+                        <label for="nacionalidad">Nacionalidad *</label>
+                        <select id="nacionalidad" name="nacionalidad" required>
+                            <option value="">Seleccione...</option>
+                            <option value="argentina">Argentina</option>
+                            <option value="chilena">Chilena</option>
+                            <option value="colombiana">Colombiana</option>
+                            <option value="otra">Otra</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="email_principal">Correo electrónico *</label>
+                        <input type="email" id="email_principal" name="email_principal" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono_principal">Teléfono de contacto *</label>
+                    <input type="tel" id="telefono_principal" name="telefono_principal" required>
+                </div>
+
+                <div class="form-group">
+                    <label><input type="checkbox" id="check_necesidades" name="check_necesidades"> ¿Tiene necesidades especiales?</label>
+                </div>
+                <div class="form-group" id="container_necesidades_texto" style="display:none;">
+                    <label for="texto_necesidades">Detalle sus necesidades *</label>
+                    <textarea id="texto_necesidades" name="texto_necesidades" rows="2"></textarea>
+                </div>
+            </fieldset>
+
+            <!-- SECCIÓN C: Preferencias y Servicios Adicionales -->
+            <fieldset>
+                <legend>Sección C — Preferencias y Servicios Adicionales</legend>
+                
+                <div class="form-group row">
+                    <div>
+                        <label>Tipo de habitación preferida *</label>
+                        <div id="grupo-habitacion">
+                            <label><input type="radio" name="tipo_hab" value="simple"> Simple</label>
+                            <label><input type="radio" name="tipo_hab" value="doble"> Doble</label>
+                            <label><input type="radio" name="tipo_hab" value="triple"> Triple</label>
+                            <label><input type="radio" name="tipo_hab" value="suite"> Suite</label>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="regimen_comidas">Régimen de comidas *</label>
+                        <select id="regimen_comidas" name="regimen_comidas" required>
+                            <option value="">Seleccione...</option>
+                            <option value="alojamiento">Solo alojamiento</option>
+                            <option value="desayuno">Desayuno incluido</option>
+                            <option value="media_pension">Media pensión</option>
+                            <option value="pension_completa">Pensión completa</option>
+                            <option value="todo_incluido">Todo incluido</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Servicios adicionales</label>
+                    <div>
+                        <label><input type="checkbox" name="servicios[]" value="seguro"> Seguro de viaje</label>
+                        <label><input type="checkbox" name="servicios[]" value="traslado"> Traslado aeropuerto</label>
+                        <label><input type="checkbox" name="servicios[]" value="excursiones"> Excursiones incluidas</label>
+                        <label><input type="checkbox" name="servicios[]" value="guia"> Guía en español</label>
+                        <label><input type="checkbox" name="servicios[]" value="visa"> Visa incluida</label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div>
+                        <label for="presupuesto">Presupuesto estimado por persona *</label>
+                        <select id="presupuesto" name="presupuesto" required>
+                            <option value="">Seleccione...</option>
+                            <option value="menos_500">Menos de USD 500</option>
+                            <option value="500_1000">USD 500 a 1000</option>
+                            <option value="1000_2500">USD 1000 a 2500</option>
+                            <option value="2500_5000">USD 2500 a 5000</option>
+                            <option value="sin_limite">Sin límite definido</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="como_entero">¿Cómo se enteró de ViajarYa?</label>
+                        <select id="como_entero" name="como_entero">
+                            <option value="">Seleccione...</option>
+                            <option value="redes">Redes sociales</option>
+                            <option value="recomendacion">Recomendación</option>
+                            <option value="web">Búsqueda web</option>
+                            <option value="publicidad">Publicidad</option>
+                            <option value="cliente">Ya soy cliente</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- SECCIÓN D: Comentarios y Confirmación -->
+            <fieldset>
+                <legend>Sección D — Comentarios y Confirmación</legend>
+                
+                <div class="form-group">
+                    <label for="comentarios">Comentarios o pedidos especiales (Máx 300) <span id="char-count">0 / 300</span></label>
+                    <textarea id="comentarios" name="comentarios" maxlength="300" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label><input type="checkbox" id="recibir_ofertas" name="recibir_ofertas"> Deseo recibir ofertas por correo electrónico</label>
+                </div>
+
+                <div class="form-group">
+                    <label><input type="checkbox" id="terminos" name="terminos" required> Acepto los <a href="#">Términos y Condiciones</a> *</label>
+                    <label><input type="checkbox" id="privacidad" name="privacidad" required> Acepto la Política de Privacidad y tratamiento de datos *</label>
+                </div>
+            </fieldset>
+
+            <div class="form-actions" style="text-align: center; margin-top: 2rem;">
+                <button type="submit" class="btn-primary">Solicitar Reserva</button>
+                <button type="reset" class="btn-secondary">Limpiar</button>
+            </div>
+        </form>
     </main>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 ViajarYa. Tu viaje soñado comienza aquí.</p>
-        <nav>
-            <ul>
-                <li><a href="#home">Inicio</a></li>
-                <li><a href="#destinations">Destinos</a></li>
-                <li><a href="#services">Servicios</a></li>
-                <li><a href="reserva.html">Reserva</a></li>
-            </ul>
-        </nav>
-        <div class="contact-info">
-            <p>Email: contacto@viajarya.com</p>
-            <p>Teléfono: +56 9 1234 5678</p>
-            <p>WhatsApp: +56 9 1234 5678</p>
-        </div>
-        <div class="social-media">
-            <a href="#">Facebook</a>
-            <a href="#">Twitter</a>
-            <a href="#">Instagram</a>
-        </div>
-    </footer>
-
 </body>
 </html>
