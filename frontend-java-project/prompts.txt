@@ -1,0 +1,35 @@
+# ETAPA 1 — Estructura y Página Principal
+
+Entrada 1
+- Prompt utilizado: "Crea la estructura HTML5 principal para index.html cumpliendo con los requisitos de la Etapa 1: navbar, hero con buscador, grilla de destinos, servicios, testimonios y footer completo."
+- Resumen de la respuesta: GitHub Copilot proporcionó la estructura semántica completa con las secciones solicitadas, utilizando clases para preparar el CSS y enlaces funcionales.
+- Reflexión personal / Uso: Lo use igual que en la prueba anterior, para darle la estructura principal a mi trabajo, para trabajar mas "ordenado" aun que si al final fui agregando archivos nuevos.
+Entrada 2
+- Prompt utilizado: "Listo, pasemos a la mejora visual con el css esto recomendado como etapa 2 del proyecto, actúa como un experto en front end aplicando estilos de css en el archivo style.css usando márgenes, sombras, un background que combine con el taller que estoy realizando, etc."
+- Resumen de la respuesta: Copilot generó un archivo CSS usando variables root para los colores, fuentes de Google Fonts, CSS Grid para las tarjetas y media queries para hacerlo responsivo.
+- Reflexión personal / Uso: Lo use basicamente para mejorar el aspecto visual y para que "combinara" por asi decirlo con lo que se pedia con el tema de la agencia en el tema de los colores y asi y tambien para centrar el texto, etc...
+
+
+# ETAPA 2 — Formulario de Reserva
+
+Entrada 3
+- Prompt utilizado: "Actúa como experto en frontend y genérame el archivo reserva.html para que cumpla con los requisitos de la prueba (4 secciones visuales divididas con fieldset/legend, inputs requeridos) y agrega el estilo correspondiente en reserva.css, asegurando el ancho de 750px, los estados focus y las clases de validación campo-error y campo-ok."
+- Resumen de la respuesta: Copilot entregó la estructura inicial del formulario dividida en los fieldsets requeridos y el archivo reserva.css con el ancho máximo y las clases de validación.
+- Reflexión personal / Uso: Utilicé este código porque dividir el grupo de campos con fieldset y legend no solo hace que el formulario se vea mucho más ordenado visualmente por secciones, sino que también mejora la accesibilidad. Esto permite que los lectores de pantalla puedan agrupar la información, ayudando a las personas con discapacidades visuales a entender de qué trata cada bloque de datos mientras navegan por el formulario
+
+Entrada 4
+- Prompt utilizado: "Actúa como experto en frontend y actualiza el archivo reserva.html para que incluya todos los campos de la rúbrica que faltaban: checkbox de fechas flexibles, select de nacionalidad, campos condicionales para adultos mayores y necesidades especiales con sus respectivos inputs ocultos, selects de preferencias (comidas, presupuesto, cómo se enteró), checkboxes de servicios extras y checkbox de ofertas."
+- Resumen de la respuesta: Copilot actualizó el archivo HTML integrando los campos faltantes, envueltos en contenedores (divs) ocultos para ser manipulados posteriormente por JavaScript.
+- Reflexión personal / Uso: Mi uso aquí fue principalmente para completar y mejorar lo que ya llevaba, agregando los campos que me faltaban de una vez para no perder tiempo. Al integrar estos campos en contenedores ocultos, cumplo exactamente con todos los detalles y opciones específicas que pedía la rúbrica de la etapa 2, dejando el archivo totalmente listo
+
+
+# ETAPA 3 — Validaciones JavaScript
+
+Entrada 5
+- Prompt utilizado: "Actúa como experto en frontend y genérame el archivo validaciones.js en JavaScript nativo para interceptar el envío del formulario reserva.html. Debe incluir: validaciones de fechas (mínimo 7 días desde hoy y mayoría de edad), uso de expresiones regulares para email, DNI y teléfono, cambio dinámico de clases CSS (campo-error y campo-ok), prevención de envío con preventDefault(), scroll automático al primer error y creación dinámica de elementos del DOM para la pantalla de confirmación final."
+- Resumen de la respuesta: Copilot programó el script capturando el evento submit, aplicando Regex, previniendo el envío y creando las funciones base para pintar de rojo/verde los inputs.
+- Reflexión personal / Uso: Lo usé para "frenar" el envío del formulario apenas se detectara un error. Con la función preventDefault() evité que la página se recargue automáticamente y que se manden datos malos o incompletos, obligando a que se corrija todo antes de poder procesar la reserva.
+Entrada 6
+- Prompt utilizado: "Actúa como experto en frontend y entrégame el código completo del archivo validaciones.js (sin partes cortadas) para cubrir totalmente las reglas de Etapa 3. Debe incluir manejo DOM para mostrar/ocultar los nuevos inputs condicionales de la Etapa 5 (adultos mayores y necesidades especiales) y validar los nuevos select obligatorios. Asegúrate de conservar el preventDefault, la creación dinámica de mensajes bajo cada input, el contador de comentarios, la validación de fechas (7 días en adelante y edad >18), expresiones regulares y el scroll al primer error."
+- Resumen de la respuesta: Copilot integró los listeners "change" para mostrar u ocultar campos dinámicos en tiempo real y sumó la validación final que inyecta los mensajes de error exactos debajo de cada input defectuoso.
+- Reflexión personal / Uso: Lo usé para mejorar la experiencia de quien llene el formulario. Darle un aviso visual inmediato (como los bordes rojos o mensajes) ayuda a que la persona vea rápido en qué se equivocó y lo arregle ahí mismo

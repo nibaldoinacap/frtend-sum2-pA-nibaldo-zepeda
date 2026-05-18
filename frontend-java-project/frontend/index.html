@@ -3,274 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solicitud de Reserva - ViajarYa</title>
+    <title>ViajarYa - Agencia de Turismo</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/reserva.css">
-    <script src="js/validaciones.js" defer></script>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Volver al inicio</a></li>
+
+    <!-- Header y Navegación -->
+    <header style="background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100;">
+        <nav style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; max-width: 1200px; margin: 0 auto;">
+            <div class="logo" style="font-weight: bold; font-size: 1.8rem; color: var(--color-principal);">ViajarYa</div>
+            <ul style="list-style: none; display: flex; gap: 1.5rem; margin: 0; padding: 0;">
+                <li><a href="#home" style="text-decoration: none; color: #333; font-weight: bold;">Inicio</a></li>
+                <li><a href="#destinations" style="text-decoration: none; color: #333; font-weight: bold;">Destinos</a></li>
+                <li><a href="#services" style="text-decoration: none; color: #333; font-weight: bold;">Servicios</a></li>
+                <li><a href="#about" style="text-decoration: none; color: #333; font-weight: bold;">Nosotros</a></li>
+                <li><a href="reserva.html" style="text-decoration: none; font-weight: bold; color: white; background-color: var(--color-acento); padding: 5px 15px; border-radius: 5px;">Reservar</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="form-container">
-        <h2>Solicitud de Paquete Turístico</h2>
-        <div id="error-summary" style="display:none; color:red; margin-bottom: 1rem;"></div>
-
-        <form id="reserva-form" novalidate>
+    <!-- Hero Section con Buscador -->
+    <section id="hero" style="background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center; position: relative;">
+        <div class="hero-overlay" style="background: rgba(0,0,0,0.4); padding: 6rem 1rem; text-align: center; color: white;">
+            <h1 style="font-size: 3.5rem; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Descubre el mundo con ViajarYa</h1>
+            <p style="font-size: 1.5rem; margin-bottom: 3rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">Tu viaje soñado comienza aquí.</p>
             
-            <!-- SECCIÓN A: Datos del Viaje -->
-            <fieldset>
-                <legend>Sección A — Datos del Viaje</legend>
-                
-                <div class="form-group">
-                    <label for="destino">Destino de interés *</label>
-                    <select id="destino" name="destino" required>
-                        <option value="">Seleccione un destino...</option>
-                        <optgroup label="América del Sur">
-                            <option value="buenos_aires">Buenos Aires, Argentina</option>
-                            <option value="cordoba">Córdoba, Argentina</option>
-                            <option value="rio">Río de Janeiro, Brasil</option>
-                            <option value="machu_picchu">Machu Picchu, Perú</option>
-                        </optgroup>
-                        <optgroup label="Europa">
-                            <option value="paris">París, Francia</option>
-                            <option value="madrid">Madrid, España</option>
-                            <option value="roma">Roma, Italia</option>
-                        </optgroup>
-                        <optgroup label="Caribe">
-                            <option value="cancun">Cancún, México</option>
-                            <option value="punta_cana">Punta Cana, R. Dominicana</option>
-                            <option value="aruba">Aruba</option>
-                        </optgroup>
-                        <optgroup label="Asia y Otros">
-                            <option value="tokio">Tokio, Japón</option>
-                            <option value="bangkok">Bangkok, Tailandia</option>
-                            <option value="sidney">Sídney, Australia</option>
-                        </optgroup>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Tipo de paquete *</label>
-                    <div id="grupo-tipo-paquete">
-                        <label><input type="radio" name="tipo_paquete" value="todo_incluido"> Todo incluido</label>
-                        <label><input type="radio" name="tipo_paquete" value="aereo_hotel"> Solo aéreo + hotel</label>
-                        <label><input type="radio" name="tipo_paquete" value="crucero"> Crucero</label>
-                        <label><input type="radio" name="tipo_paquete" value="egresados"> Viaje de egresados</label>
-                        <label><input type="radio" name="tipo_paquete" value="medida"> A medida</label>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <div>
-                        <label for="fecha_salida">Fecha de salida deseada *</label>
-                        <input type="date" id="fecha_salida" name="fecha_salida" required>
-                    </div>
-                    <div>
-                        <label for="fecha_regreso">Fecha de regreso deseada *</label>
-                        <input type="date" id="fecha_regreso" name="fecha_regreso" required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label><input type="checkbox" id="fechas_flexibles" name="fechas_flexibles"> Mis fechas son flexibles (± 3 días)</label>
-                </div>
-
-                <div class="form-group row">
-                    <div>
-                        <label for="duracion">Duración aproximada *</label>
-                        <select id="duracion" name="duracion" required>
-                            <option value="">Seleccione...</option>
-                            <option value="3_5_dias">3 a 5 días</option>
-                            <option value="1_semana">1 semana</option>
-                            <option value="2_semanas">2 semanas</option>
-                            <option value="mas_2_semanas">Más de 2 semanas</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="puerto_salida">Puerto de salida *</label>
-                        <select id="puerto_salida" name="puerto_salida" required>
-                            <option value="">Seleccione...</option>
-                            <option value="buenos_aires">Buenos Aires</option>
-                            <option value="cordoba">Córdoba</option>
-                            <option value="rosario">Rosario</option>
-                            <option value="otro">Otro</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="form-group" id="container_otro_puerto" style="display:none;">
-                    <label for="otro_puerto">Especificar ciudad de salida *</label>
-                    <input type="text" id="otro_puerto" name="otro_puerto">
-                </div>
-            </fieldset>
-
-            <!-- SECCIÓN B: Datos de los Pasajeros -->
-            <fieldset>
-                <legend>Sección B — Datos de los Pasajeros</legend>
-                
-                <div class="form-group row">
-                    <div>
-                        <label for="cant_adultos">Adultos (Mín 1, Máx 10) *</label>
-                        <input type="number" id="cant_adultos" name="cant_adultos" min="1" max="10" value="1" required>
-                    </div>
-                    <div>
-                        <label for="cant_menores">Menores (Mín 0, Máx 8)</label>
-                        <input type="number" id="cant_menores" name="cant_menores" min="0" max="8" value="0">
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <div>
-                        <label><input type="checkbox" id="con_adultos_mayores" name="con_adultos_mayores"> Viaja con adultos mayores</label>
-                    </div>
-                    <div id="container_cant_mayores" style="display:none;">
-                        <label for="cant_mayores">Cantidad de adultos mayores</label>
-                        <input type="number" id="cant_mayores" name="cant_mayores" min="1" max="10">
-                    </div>
-                </div>
-
-                <h4>Datos del Pasajero Principal</h4>
-                <div class="form-group">
-                    <label for="nombre_principal">Nombre completo *</label>
-                    <input type="text" id="nombre_principal" name="nombre_principal" required>
-                </div>
-                
-                <div class="form-group row">
-                    <div>
-                        <label for="dni_pasaporte">DNI o Pasaporte *</label>
-                        <input type="text" id="dni_pasaporte" name="dni_pasaporte" required>
-                    </div>
-                    <div>
-                        <label for="fecha_nac_principal">Fecha de Nacimiento *</label>
-                        <input type="date" id="fecha_nac_principal" name="fecha_nac_principal" required>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <div>
-                        <label for="nacionalidad">Nacionalidad *</label>
-                        <select id="nacionalidad" name="nacionalidad" required>
-                            <option value="">Seleccione...</option>
-                            <option value="argentina">Argentina</option>
-                            <option value="chilena">Chilena</option>
-                            <option value="colombiana">Colombiana</option>
-                            <option value="otra">Otra</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="email_principal">Correo electrónico *</label>
-                        <input type="email" id="email_principal" name="email_principal" required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="telefono_principal">Teléfono de contacto *</label>
-                    <input type="tel" id="telefono_principal" name="telefono_principal" required>
-                </div>
-
-                <div class="form-group">
-                    <label><input type="checkbox" id="check_necesidades" name="check_necesidades"> ¿Tiene necesidades especiales?</label>
-                </div>
-                <div class="form-group" id="container_necesidades_texto" style="display:none;">
-                    <label for="texto_necesidades">Detalle sus necesidades *</label>
-                    <textarea id="texto_necesidades" name="texto_necesidades" rows="2"></textarea>
-                </div>
-            </fieldset>
-
-            <!-- SECCIÓN C: Preferencias y Servicios Adicionales -->
-            <fieldset>
-                <legend>Sección C — Preferencias y Servicios Adicionales</legend>
-                
-                <div class="form-group row">
-                    <div>
-                        <label>Tipo de habitación preferida *</label>
-                        <div id="grupo-habitacion">
-                            <label><input type="radio" name="tipo_hab" value="simple"> Simple</label>
-                            <label><input type="radio" name="tipo_hab" value="doble"> Doble</label>
-                            <label><input type="radio" name="tipo_hab" value="triple"> Triple</label>
-                            <label><input type="radio" name="tipo_hab" value="suite"> Suite</label>
-                        </div>
-                    </div>
-                    <div>
-                        <label for="regimen_comidas">Régimen de comidas *</label>
-                        <select id="regimen_comidas" name="regimen_comidas" required>
-                            <option value="">Seleccione...</option>
-                            <option value="alojamiento">Solo alojamiento</option>
-                            <option value="desayuno">Desayuno incluido</option>
-                            <option value="media_pension">Media pensión</option>
-                            <option value="pension_completa">Pensión completa</option>
-                            <option value="todo_incluido">Todo incluido</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Servicios adicionales</label>
-                    <div>
-                        <label><input type="checkbox" name="servicios[]" value="seguro"> Seguro de viaje</label>
-                        <label><input type="checkbox" name="servicios[]" value="traslado"> Traslado aeropuerto</label>
-                        <label><input type="checkbox" name="servicios[]" value="excursiones"> Excursiones incluidas</label>
-                        <label><input type="checkbox" name="servicios[]" value="guia"> Guía en español</label>
-                        <label><input type="checkbox" name="servicios[]" value="visa"> Visa incluida</label>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <div>
-                        <label for="presupuesto">Presupuesto estimado por persona *</label>
-                        <select id="presupuesto" name="presupuesto" required>
-                            <option value="">Seleccione...</option>
-                            <option value="menos_500">Menos de USD 500</option>
-                            <option value="500_1000">USD 500 a 1000</option>
-                            <option value="1000_2500">USD 1000 a 2500</option>
-                            <option value="2500_5000">USD 2500 a 5000</option>
-                            <option value="sin_limite">Sin límite definido</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="como_entero">¿Cómo se enteró de ViajarYa?</label>
-                        <select id="como_entero" name="como_entero">
-                            <option value="">Seleccione...</option>
-                            <option value="redes">Redes sociales</option>
-                            <option value="recomendacion">Recomendación</option>
-                            <option value="web">Búsqueda web</option>
-                            <option value="publicidad">Publicidad</option>
-                            <option value="cliente">Ya soy cliente</option>
-                        </select>
-                    </div>
-                </div>
-            </fieldset>
-
-            <!-- SECCIÓN D: Comentarios y Confirmación -->
-            <fieldset>
-                <legend>Sección D — Comentarios y Confirmación</legend>
-                
-                <div class="form-group">
-                    <label for="comentarios">Comentarios o pedidos especiales (Máx 300) <span id="char-count">0 / 300</span></label>
-                    <textarea id="comentarios" name="comentarios" maxlength="300" rows="3"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label><input type="checkbox" id="recibir_ofertas" name="recibir_ofertas"> Deseo recibir ofertas por correo electrónico</label>
-                </div>
-
-                <div class="form-group">
-                    <label><input type="checkbox" id="terminos" name="terminos" required> Acepto los <a href="#">Términos y Condiciones</a> *</label>
-                    <label><input type="checkbox" id="privacidad" name="privacidad" required> Acepto la Política de Privacidad y tratamiento de datos *</label>
-                </div>
-            </fieldset>
-
-            <div class="form-actions" style="text-align: center; margin-top: 2rem;">
-                <button type="submit" class="btn-primary">Solicitar Reserva</button>
-                <button type="reset" class="btn-secondary">Limpiar</button>
+            <div class="search-bar" style="background: rgba(255,255,255,0.95); padding: 1.5rem; border-radius: 10px; display: inline-flex; gap: 1rem; flex-wrap: wrap; justify-content: center; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                <input type="text" placeholder="Destino (Ej. París)" style="padding: 12px; border-radius: 5px; border: 1px solid #ccc; font-size: 1rem; min-width: 200px;">
+                <input type="date" title="Fecha de viaje" style="padding: 12px; border-radius: 5px; border: 1px solid #ccc; font-size: 1rem;">
+                <input type="number" placeholder="Pasajeros" min="1" style="padding: 12px; border-radius: 5px; border: 1px solid #ccc; font-size: 1rem; width: 120px;">
+                <button type="button" onclick="window.location.href='reserva.html'" class="btn-primary" style="padding: 12px 25px; font-size: 1.1rem; border: none; border-radius: 5px; cursor: pointer; background-color: var(--color-acento); color: white; font-weight: bold;">Buscar</button>
             </div>
-        </form>
+        </div>
+    </section>
+
+    <!-- Secciones Principales -->
+    <main style="padding: 3rem 1rem; max-width: 1200px; margin: 0 auto;">
+        
+        <!-- Destinos -->
+        <section id="destinations" style="margin-bottom: 4rem;">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: var(--color-principal); font-size: 2.5rem;">Nuestros Destinos Destacados</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem;">
+                <!-- Tarjeta 1 -->
+                <div class="card" style="border: 1px solid #ddd; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 10px rgba(0,0,0,0.05); text-align: center; transition: transform 0.3s;">
+                    <img src="https://images.unsplash.com/photo-1589909202802-8f4aadce1849?auto=format&fit=crop&w=400&q=80" alt="Buenos Aires" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div style="padding: 1.5rem;">
+                        <h3 style="margin-bottom: 0.5rem;">Buenos Aires</h3>
+                        <p style="color: #555; margin-bottom: 1rem;">Disfruta de la capital del tango y su excelente gastronomía.</p>
+                        <p style="color: var(--color-acento); font-weight: bold; font-size: 1.3rem; margin-bottom: 1rem;">Desde USD 500</p>
+                        <button onclick="window.location.href='reserva.html'" style="padding: 10px 20px; background-color: var(--color-principal); color: white; border: none; border-radius: 5px; cursor: pointer; width: 100%;">Ver paquetes</button>
+                    </div>
+                </div>
+                <!-- Tarjeta 2 -->
+                <div class="card" style="border: 1px solid #ddd; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 10px rgba(0,0,0,0.05); text-align: center; transition: transform 0.3s;">
+                    <img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=400&q=80" alt="Río de Janeiro" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div style="padding: 1.5rem;">
+                        <h3 style="margin-bottom: 0.5rem;">Río de Janeiro</h3>
+                        <p style="color: #555; margin-bottom: 1rem;">Playas, sol, Cristo Redentor y una cultura vibrante.</p>
+                        <p style="color: var(--color-acento); font-weight: bold; font-size: 1.3rem; margin-bottom: 1rem;">Desde USD 700</p>
+                        <button onclick="window.location.href='reserva.html'" style="padding: 10px 20px; background-color: var(--color-principal); color: white; border: none; border-radius: 5px; cursor: pointer; width: 100%;">Ver paquetes</button>
+                    </div>
+                </div>
+                <!-- Tarjeta 3 -->
+                <div class="card" style="border: 1px solid #ddd; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 10px rgba(0,0,0,0.05); text-align: center; transition: transform 0.3s;">
+                    <img src="https://images.unsplash.com/photo-1526392060635-9d60198d3de3?auto=format&fit=crop&w=400&q=80" alt="Machu Picchu" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div style="padding: 1.5rem;">
+                        <h3 style="margin-bottom: 0.5rem;">Machu Picchu</h3>
+                        <p style="color: #555; margin-bottom: 1rem;">Maravíllate con la historia viva del imperio inca.</p>
+                        <p style="color: var(--color-acento); font-weight: bold; font-size: 1.3rem; margin-bottom: 1rem;">Desde USD 600</p>
+                        <button onclick="window.location.href='reserva.html'" style="padding: 10px 20px; background-color: var(--color-principal); color: white; border: none; border-radius: 5px; cursor: pointer; width: 100%;">Ver paquetes</button>
+                    </div>
+                </div>
+                <!-- Tarjeta 4 -->
+                <div class="card" style="border: 1px solid #ddd; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 10px rgba(0,0,0,0.05); text-align: center; transition: transform 0.3s;">
+                    <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=400&q=80" alt="París" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div style="padding: 1.5rem;">
+                        <h3 style="margin-bottom: 0.5rem;">París</h3>
+                        <p style="color: #555; margin-bottom: 1rem;">La ciudad de la luz y el amor te espera.</p>
+                        <p style="color: var(--color-acento); font-weight: bold; font-size: 1.3rem; margin-bottom: 1rem;">Desde USD 1200</p>
+                        <button onclick="window.location.href='reserva.html'" style="padding: 10px 20px; background-color: var(--color-principal); color: white; border: none; border-radius: 5px; cursor: pointer; width: 100%;">Ver paquetes</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Servicios -->
+        <section id="services" style="margin-bottom: 4rem;">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: var(--color-principal); font-size: 2.5rem;">Tipos de Servicios</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; text-align: center;">
+                <div class="card" style="padding: 2.5rem 1.5rem; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #eee;">
+                    <div style="font-size: 4rem; margin-bottom: 1rem;">✈️</div>
+                    <h3 style="margin-bottom: 0.5rem;">Todo Incluido</h3>
+                    <p style="color: #666;">Paquetes donde no te preocupas por nada más que disfrutar.</p>
+                </div>
+                <div class="card" style="padding: 2.5rem 1.5rem; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #eee;">
+                    <div style="font-size: 4rem; margin-bottom: 1rem;">🚢</div>
+                    <h3 style="margin-bottom: 0.5rem;">Cruceros</h3>
+                    <p style="color: #666;">Recorre el caribe o el mediterráneo con lujosas amenidades.</p>
+                </div>
+                <div class="card" style="padding: 2.5rem 1.5rem; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #eee;">
+                    <div style="font-size: 4rem; margin-bottom: 1rem;">🎓</div>
+                    <h3 style="margin-bottom: 0.5rem;">Viajes de Egresados</h3>
+                    <p style="color: #666;">Diversión y seguridad asegurada para los estudiantes.</p>
+                </div>
+                <div class="card" style="padding: 2.5rem 1.5rem; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #eee;">
+                    <div style="font-size: 4rem; margin-bottom: 1rem;">🎒</div>
+                    <h3 style="margin-bottom: 0.5rem;">Aventura</h3>
+                    <p style="color: #666;">Explora la naturaleza extrema con los mejores guías locales.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonios -->
+        <section id="testimonios" style="margin-bottom: 4rem; background-color: #f0f8ff; padding: 3rem 2rem; border-radius: 10px;">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: var(--color-principal); font-size: 2.5rem;">Testimonios de Clientes</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; text-align: center;">
+                <div class="card" style="padding: 2rem; background: white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                    <h3 style="color: var(--color-secundario);">María González</h3>
+                    <p style="font-style: italic; color: #555; margin: 1rem 0;">"El viaje a París fue un sueño hecho realidad. Todo perfectamente organizado por ViajarYa, superaron mis expectativas."</p>
+                    <p style="font-size: 1.2rem;">⭐⭐⭐⭐⭐</p>
+                </div>
+                <div class="card" style="padding: 2rem; background: white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                    <h3 style="color: var(--color-secundario);">Juan Pérez</h3>
+                    <p style="font-style: italic; color: #555; margin: 1rem 0;">"Excelente atención. Tuvimos un problema con el vuelo estando en otro país y lo resolvieron en minutos vía WhatsApp."</p>
+                    <p style="font-size: 1.2rem;">⭐⭐⭐⭐</p>
+                </div>
+                <div class="card" style="padding: 2rem; background: white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                    <h3 style="color: var(--color-secundario);">Camila Rojas</h3>
+                    <p style="font-style: italic; color: #555; margin: 1rem 0;">"Precios imbatibles para nuestro viaje de egresados. Muchísima seguridad para los chicos. ¡Recomendados al 100%!"</p>
+                    <p style="font-size: 1.2rem;">⭐⭐⭐⭐⭐</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Por qué elegirnos -->
+        <section id="about" style="text-align: center; padding: 2rem 0;">
+            <h2 style="color: var(--color-principal); font-size: 2.5rem; margin-bottom: 2rem;">Por qué Elegirnos</h2>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 3rem;">
+                <div style="max-width: 300px;">
+                    <div style="font-size: 3rem; color: var(--color-acento); margin-bottom: 1rem;">🏆</div>
+                    <h3>Experiencia</h3>
+                    <p style="color: #666;">Más de 10 años haciendo viajes inolvidables alrededor del mundo.</p>
+                </div>
+                <div style="max-width: 300px;">
+                    <div style="font-size: 3rem; color: var(--color-acento); margin-bottom: 1rem;">📞</div>
+                    <h3>Atención Personalizada</h3>
+                    <p style="color: #666;">Soporte en tu idioma las 24 horas, los 7 días de la semana.</p>
+                </div>
+                <div style="max-width: 300px;">
+                    <div style="font-size: 3rem; color: var(--color-acento); margin-bottom: 1rem;">💰</div>
+                    <h3>Mejores Precios</h3>
+                    <p style="color: #666;">Garantizamos los precios más competitivos del mercado turístico.</p>
+                </div>
+            </div>
+        </section>
+
     </main>
+
+    <!-- Footer -->
+    <footer style="background-color: #222; color: #eee; padding: 3rem 1rem; text-align: center; margin-top: 2rem;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-around; gap: 2rem; text-align: left;">
+            <div>
+                <h3 style="color: white; font-size: 1.5rem; margin-bottom: 1rem;">ViajarYa</h3>
+                <p>Tu viaje soñado comienza aquí.</p>
+            </div>
+            <div>
+                <h4 style="color: white; margin-bottom: 1rem;">Enlaces Rápidos</h4>
+                <ul style="list-style: none; padding: 0; line-height: 1.8;">
+                    <li><a href="#home" style="color: #bbb; text-decoration: none;">Inicio</a></li>
+                    <li><a href="#destinations" style="color: #bbb; text-decoration: none;">Destinos</a></li>
+                    <li><a href="#services" style="color: #bbb; text-decoration: none;">Servicios</a></li>
+                    <li><a href="reserva.html" style="color: var(--color-acento); font-weight: bold; text-decoration: none;">Reservar Ahora</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: white; margin-bottom: 1rem;">Contacto</h4>
+                <p style="color: #bbb; margin-bottom: 0.5rem;">📧 Email: contacto@viajarya.com</p>
+                <p style="color: #bbb; margin-bottom: 0.5rem;">📞 Teléfono: +56 9 1234 5678</p>
+                <p style="color: #bbb; margin-bottom: 0.5rem;">📱 WhatsApp: +56 9 1234 5678</p>
+            </div>
+            <div>
+                <h4 style="color: white; margin-bottom: 1rem;">Síguenos</h4>
+                <a href="#" style="color: #bbb; text-decoration: none; display: block; margin-bottom: 0.5rem;">Facebook</a>
+                <a href="#" style="color: #bbb; text-decoration: none; display: block; margin-bottom: 0.5rem;">Instagram</a>
+                <a href="#" style="color: #bbb; text-decoration: none; display: block;">Twitter</a>
+            </div>
+        </div>
+        <div style="border-top: 1px solid #444; margin-top: 2rem; padding-top: 1rem;">
+            <p>&copy; 2026 ViajarYa. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
